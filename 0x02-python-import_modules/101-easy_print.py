@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-import easy
+
+exec('import subprocess; subprocess.call(["echo", "#pythoniscool"])')

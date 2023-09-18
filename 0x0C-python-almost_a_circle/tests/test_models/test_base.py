@@ -4,22 +4,21 @@ import pep8
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+"""tests the Base"""
+
 
 class TestBase(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        Base._Base__nb_objects = 0
-
     def test_pep8(self):
-        """Test PEP8 formatting."""
+        """ testss prp8 formating """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/base.py'])
         self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+                         "Found code style erross (and warnings).")
 
     def test_id(self):
-        """Test the IDs."""
+        """testss the ids"""
+        Base._Base__nb_objects = 0
         b1 = Base()
         b2 = Base()
         b3 = Base()
@@ -32,7 +31,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b5.id, 4)
 
     def test_dictionary(self):
-        """Test the to_dictionary method."""
+        """testss the dictionary"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         self.assertDictEqual(dictionary,
@@ -44,7 +44,8 @@ class TestBase(unittest.TestCase):
         self.assertEqual(Base.to_json_string([]), "[]")
 
     def test_saveFile(self):
-        """Test the save_to_file and load_from_file methods."""
+        """testss the savefile"""
+        Base._Base__nb_objects = 0
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Square(4)
         Rectangle.save_to_file([r1])
@@ -62,7 +63,7 @@ class TestBase(unittest.TestCase):
             self.assertTrue(f.read() == "[]")
 
     def test_fromJson(self):
-        """Test the from_json_string method."""
+        """testss the fromjson"""
         r_input = [{'id': 89, 'width': 10, 'height': 4}]
         s_input = [{'id': 89, 'size': 4}]
         json_list_input = Rectangle.to_json_string(r_input)
@@ -81,22 +82,22 @@ class TestBase(unittest.TestCase):
         self.assertTrue(list_output == [])
 
     def test_load(self):
-        """Test the load_from_file method."""
+        """testss load"""
         r1 = Rectangle(10, 7, 2, 8)
         r2 = Rectangle(2, 4)
         list_rectangles_input = [r1, r2]
         Rectangle.save_to_file(list_rectangles_input)
         list_rectangles_output = Rectangle.load_from_file()
         for thing in list_rectangles_output:
-            self.assertTrue(isinstance(thing, Rectangle))
+            self.assertTrue(type(thing) is Rectangle)
         s1 = Square(5)
         s2 = Square(7, 9, 1)
         list_squares_input = [s1, s2]
         Square.save_to_file(list_squares_input)
         list_squares_output = Square.load_from_file()
         for thing in list_squares_output:
-            self.assertTrue(isinstance(thing, Square))
+            self.assertTrue(type(thing) is Square)
+
 
 if __name__ == '__main__':
     unittest.main()
-

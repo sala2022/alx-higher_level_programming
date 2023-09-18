@@ -10,17 +10,17 @@ import pep8
 
 
 class TestSquare(unittest.TestCase):
-    """tests class square"""
+    """testss class square"""
 
     def test_pep8(self):
-        """ Test PEP8 formatting """
+        """ testss prp8 formating """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/square.py'])
         self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+                         "Found code style erross (and warnings).")
 
     def test_docstrings(self):
-        """ Tests docstrings """
+        """testss docstrings"""
         self.assertTrue(len(Rectangle.__doc__) > 0)
         self.assertTrue(len(Square.__doc__) > 0)
         for func in dir(Rectangle):
@@ -29,7 +29,7 @@ class TestSquare(unittest.TestCase):
             self.assertTrue(len(func.__doc__) > 0)
 
     def test_ids(self):
-        """ Tests IDs """
+        """testss ids"""
         Base._Base__nb_objects = 0
         r1 = Square(10)
         r2 = Square(2)
@@ -41,11 +41,11 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r3.id, "a")
 
     def test_attr_errors(self):
-        """ Tests attribute errors """
+        """testss errors"""
         Base._Base__nb_objects = 0
         with self.assertRaises(TypeError, msg="size must be an integer"):
             r1 = Square("2")
-        with self.assertRaises(ValueError, msg="size must be > 0"):
+        with self.assertRaises(ValueError, msg="size must be  > 0"):
             r1 = Square(-2)
         with self.assertRaises(TypeError, msg="size must be an integer"):
             r1 = Square({1: 2})
@@ -59,7 +59,7 @@ class TestSquare(unittest.TestCase):
             r4 = Square(10, 2, -1)
 
     def test_areas(self):
-        """ Tests areas """
+        """testss areas"""
         Base._Base__nb_objects = 0
         r1 = Square(3)
         self.assertEqual(r1.area(), 9)
@@ -71,7 +71,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r1.area(), 64)
 
     def test_display(self):
-        """ Tests displays """
+        """testss displays"""
         Base._Base__nb_objects = 0
         old_stdout = sys.stdout
         sys.stdout = mystdout = StringIO()
@@ -86,7 +86,7 @@ class TestSquare(unittest.TestCase):
         sys.stdout = old_stdout
 
     def test_str(self):
-        """ Tests strings """
+        """testss strings"""
         Base._Base__nb_objects = 0
         r1 = Square(4, 2, 1, 12)
         self.assertEqual(r1.__str__(), "[Square] (12) 2/1 - 4")
@@ -96,7 +96,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r1.__str__(), "[Square] (2) 0/0 - 1")
 
     def test_update(self):
-        """ Tests update """
+        """testss update"""
         Base._Base__nb_objects = 0
         r1 = Square(10, 10, 10, 10)
         r1_dictionary = r1.to_dictionary()
@@ -115,7 +115,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(r2.__str__(), "[Square] (10) 10/10 - 10")
 
     def test_dictionary(self):
-        """ Tests dictionary """
+        """testss dictionary"""
         Base._Base__nb_objects = 0
         r1 = Square(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
@@ -127,7 +127,7 @@ class TestSquare(unittest.TestCase):
             'x': 0, 'y': 0, 'size': 1, 'id': 1})
 
     def test_SquareCreate(self):
-        """ Tests create """
+        """testss create"""
         Base._Base__nb_objects = 0
         s1 = Square(10)
         s1_dictionary = s1.to_dictionary()
@@ -138,4 +138,3 @@ class TestSquare(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-

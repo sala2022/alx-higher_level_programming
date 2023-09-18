@@ -5,18 +5,20 @@ from models.rectangle import Rectangle
 from models.base import Base
 import sys
 from io import StringIO
+"""testss rectangle"""
+
 
 class TestRectangle(unittest.TestCase):
 
     def test_pep8(self):
-        """Test PEP8 formatting."""
+        """ tessts prp8 formating """
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/rectangle.py'])
         self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+                         "Found code style erross (and warnings).")
 
     def test_ids(self):
-        """Test IDs."""
+        """testss ids"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 2)
         r2 = Rectangle(2, 10)
@@ -28,11 +30,11 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r3.id, "a")
 
     def test_attr_errors(self):
-        """Test attribute errors."""
+        """testss errors"""
         Base._Base__nb_objects = 0
         with self.assertRaises(TypeError, msg="height must be an integer"):
             r1 = Rectangle(10, "2")
-        with self.assertRaises(ValueError, msg="height must be > 0"):
+        with self.assertRaises(ValueError, msg="height must be  > 0"):
             r1 = Rectangle(-2, 1)
         with self.assertRaises(TypeError, msg="width must be an integer"):
             r1 = Rectangle({1: 2}, 2)
@@ -46,7 +48,7 @@ class TestRectangle(unittest.TestCase):
             r4 = Rectangle(10, 2, 3, -1)
 
     def test_areas(self):
-        """Test areas."""
+        """testss areas"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(3, 2)
         self.assertEqual(r1.area(), 6)
@@ -58,7 +60,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.area(), 56)
 
     def test_display(self):
-        """Test display."""
+        """testss display"""
         Base._Base__nb_objects = 0
         old_stdout = sys.stdout
         sys.stdout = mystdout = StringIO()
@@ -73,7 +75,7 @@ class TestRectangle(unittest.TestCase):
         sys.stdout = old_stdout
 
     def test_str(self):
-        """Test string representation."""
+        """testss strings"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(4, 6, 2, 1, 12)
         self.assertEqual(r1.__str__(), "[Rectangle] (12) 2/1 - 4/6")
@@ -83,7 +85,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.__str__(), "[Rectangle] (2) 0/0 - 1/1")
 
     def test_update(self):
-        """Test update."""
+        """testss update"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 10, 10, 10)
         r1_dictionary = r1.to_dictionary()
@@ -102,7 +104,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r2.__str__(), "[Rectangle] (1) 10/10 - 10/10")
 
     def test_dictionary(self):
-        """Test dictionary."""
+        """testss dictionary"""
         Base._Base__nb_objects = 0
         r1 = Rectangle(10, 2, 1, 9)
         r1_dictionary = r1.to_dictionary()
@@ -114,7 +116,7 @@ class TestRectangle(unittest.TestCase):
             'x': 0, 'y': 0, 'width': 1, 'height': 1, 'id': 2})
 
     def test_RectCreate(self):
-        """Test create."""
+        """testss create"""
         Base._Base__nb_objects = 0
         s1 = Rectangle(10, 2)
         s1_dictionary = s1.to_dictionary()
@@ -122,6 +124,6 @@ class TestRectangle(unittest.TestCase):
         self.assertFalse(s1 is s2)
         self.assertFalse(s1 == s2)
 
+
 if __name__ == '__main__':
     unittest.main()
-
